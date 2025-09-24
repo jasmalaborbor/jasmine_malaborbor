@@ -14,7 +14,7 @@
       margin: 0;
       padding: 0;
       font-family: 'Poppins', sans-serif;
-      background: linear-gradient(135deg, #cfe9db, #e6f4ea); /* soft green gradient */
+      background: linear-gradient(135deg, #f0f9e8, #d9f7be); /* soft yellow-green gradient */
       height: 100vh;
       display: flex;
       align-items: center;
@@ -27,7 +27,7 @@
       padding: 40px 35px;
       width: 100%;
       max-width: 420px;
-      box-shadow: 0 10px 30px rgba(0, 50, 30, 0.1);
+      box-shadow: 0 10px 30px rgba(100, 140, 50, 0.15);
       animation: fadeIn 0.7s ease-in-out;
     }
 
@@ -36,14 +36,14 @@
       margin-bottom: 25px;
       font-size: 26px;
       font-weight: 600;
-      color: #2c5c45; /* dark forest green */
+      color: #557a1f; /* dark olive green */
     }
 
     label {
       display: block;
       margin-top: 18px;
       margin-bottom: 6px;
-      color: #3b6f5a;
+      color: #6b8e23; /* olive drab */
       font-size: 14px;
       font-weight: 500;
     }
@@ -52,26 +52,26 @@
     input[type="email"] {
       width: 100%;
       padding: 12px 14px;
-      border: 2px solid #cfe9db;
+      border: 2px solid #d9f7be;
       border-radius: 10px;
       font-size: 15px;
-      color: #2c3e50;
-      background: #f9fdfa;
+      color: #415a00;
+      background: #f7fdda; /* light yellow-green background */
       transition: border 0.3s ease;
     }
 
     input[type="text"]:focus,
     input[type="email"]:focus {
-      border-color: #47a386;
+      border-color: #a2d729; /* bright green */
       outline: none;
-      background-color: #ffffff;
+      background-color: #f0f9e8;
     }
 
     input[type="submit"] {
       margin-top: 30px;
       width: 100%;
       padding: 14px;
-      background: linear-gradient(to right, #2e8b57, #47a386);
+      background: linear-gradient(to right, #a2d729, #6b8e23);
       color: white;
       font-size: 16px;
       font-weight: 600;
@@ -82,7 +82,7 @@
     }
 
     input[type="submit"]:hover {
-      background: linear-gradient(to right, #47a386, #2e8b57);
+      background: linear-gradient(to right, #6b8e23, #a2d729);
       transform: translateY(-2px);
     }
 

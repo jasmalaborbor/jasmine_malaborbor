@@ -13,129 +13,135 @@
     body {
       font-family: 'Poppins', sans-serif;
       margin: 0;
-      padding: 20px;
-      background: linear-gradient(to right, #d0ecd8, #e6f4ea);
-      color: #2c3e50;
+      padding: 40px 20px;
+      background: #fafafa;
+      color: #333;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
     }
 
     h1 {
       text-align: center;
-      margin-bottom: 30px;
-      font-size: 28px;
+      margin-bottom: 40px;
       font-weight: 600;
-      color: #1e3d2f;
+      font-size: 28px;
+      color: #222;
     }
 
     .create-btn {
       display: inline-block;
-      background: linear-gradient(to right, #1e3d2f, #3b7b59);
-      color: white;
-      padding: 12px 24px;
-      border-radius: 30px;
+      background: transparent;
+      color: #1a73e8;
+      border: 2px solid #1a73e8;
+      padding: 10px 24px;
+      border-radius: 25px;
       font-size: 15px;
       font-weight: 600;
       text-decoration: none;
-      transition: 0.3s ease;
-      box-shadow: 0 4px 14px rgba(30, 61, 47, 0.3);
+      transition: background-color 0.3s ease, color 0.3s ease;
+      box-shadow: none;
     }
 
     .create-btn:hover {
-      background: #2e5c46;
+      background-color: #1a73e8;
+      color: #fff;
+      box-shadow: none;
       transform: translateY(-2px);
-      box-shadow: 0 6px 18px rgba(30, 61, 47, 0.45);
     }
 
     .table-wrapper {
       width: 100%;
-      max-width: 1000px;
+      max-width: 900px;
       margin: 0 auto;
       overflow-x: auto;
-      background: #fff;
-      border-radius: 15px;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
-      animation: fadeIn 0.6s ease-in-out;
     }
 
     table {
       width: 100%;
       border-collapse: collapse;
       min-width: 600px;
+      background: #fff;
+      box-shadow: 0 0 0 1px #ddd;
+      border-radius: 8px;
+      overflow: hidden;
+    }
+
+    thead tr {
+      background: #f5f5f5;
+      font-weight: 600;
+      text-transform: uppercase;
+      font-size: 13px;
+      color: #555;
     }
 
     th, td {
-      padding: 16px 20px;
-      text-align: center;
+      padding: 14px 20px;
+      text-align: left;
+      border-bottom: 1px solid #eee;
       font-size: 15px;
     }
 
-    th {
-      background: #1e3d2f;
-      color: #ffffff;
-      text-transform: uppercase;
-      font-size: 13px;
-      letter-spacing: 0.5px;
-    }
-
-    tr:nth-child(even) {
-      background: #f7fdf9;
-    }
-
-    tr:nth-child(odd) {
-      background: #ffffff;
+    tbody tr:last-child td {
+      border-bottom: none;
     }
 
     tr:hover {
-      background: #e0f5e8;
-      transition: background 0.3s ease;
+      background-color: #f9f9f9;
+      transition: background-color 0.2s ease;
     }
 
     .action-btn {
-      padding: 8px 16px;
-      border-radius: 25px;
-      font-size: 13px;
+      font-size: 14px;
       font-weight: 600;
+      padding: 6px 14px;
+      border-radius: 20px;
       text-decoration: none;
-      transition: 0.3s;
       display: inline-block;
+      border: 1.5px solid transparent;
+      transition: all 0.3s ease;
+      cursor: pointer;
+      user-select: none;
     }
 
     .edit-btn {
-      background: #28a745;
-      color: #fff;
+      background-color: transparent;
+      color: #1a73e8;
+      border-color: #1a73e8;
       margin-right: 8px;
-      box-shadow: 0 2px 6px rgba(40, 167, 69, 0.4);
     }
 
     .edit-btn:hover {
-      background: #218838;
+      background-color: #1a73e8;
+      color: #fff;
+      border-color: #1a73e8;
     }
 
     .delete-btn {
-      background: #dc3545;
-      color: #fff;
-      box-shadow: 0 2px 6px rgba(220, 53, 69, 0.4);
+      background-color: transparent;
+      color: #d93025;
+      border-color: #d93025;
     }
 
     .delete-btn:hover {
-      background: #b21f2d;
-    }
-
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(-10px); }
-      to { opacity: 1; transform: translateY(0); }
+      background-color: #d93025;
+      color: #fff;
+      border-color: #d93025;
     }
 
     @media (max-width: 768px) {
-      th, td {
-        padding: 12px 10px;
-        font-size: 14px;
+      body {
+        padding: 30px 10px;
       }
 
       .create-btn {
         width: 100%;
         text-align: center;
         display: block;
-        margin: 0 auto 20px auto;
+        margin-bottom: 25px;
+      }
+
+      table {
+        min-width: 100%;
       }
     }
   </style>
@@ -144,31 +150,34 @@
 
   <h1>Welcome to User List</h1>
 
-  <div style="width: 100%; max-width: 1000px; margin: 0 auto 25px auto; text-align: right;">
+  <div style="width: 100%; max-width: 900px; margin: 0 auto 30px auto; text-align: right;">
     <a href="<?= site_url('user/create'); ?>" class="create-btn">+ Create New User</a>
   </div>
 
   <div class="table-wrapper">
     <table>
-      <tr>
-        <th>ID</th>
-        <th>Username</th>
-        <th>Email</th>
-        <th>Action</th>
-      </tr>
-
-      <?php foreach ($users as $user): ?>
+      <thead>
         <tr>
-          <td><?= $user['id']; ?></td>
-          <td><?= $user['username']; ?></td>
-          <td><?= $user['email']; ?></td>
-          <td>
-            <a href="<?= site_url('user/update/'.$user['id']); ?>" class="action-btn edit-btn">Edit</a>
-            <a href="<?= site_url('user/delete/'.$user['id']); ?>" class="action-btn delete-btn"
-               onclick="return confirm('Are you sure you want to delete this user?');">Delete</a>
-          </td>
+          <th>ID</th>
+          <th>Username</th>
+          <th>Email</th>
+          <th>Action</th>
         </tr>
-      <?php endforeach; ?>
+      </thead>
+      <tbody>
+        <?php foreach ($users as $user): ?>
+          <tr>
+            <td><?= $user['id']; ?></td>
+            <td><?= $user['username']; ?></td>
+            <td><?= $user['email']; ?></td>
+            <td>
+              <a href="<?= site_url('user/update/'.$user['id']); ?>" class="action-btn edit-btn">Edit</a>
+              <a href="<?= site_url('user/delete/'.$user['id']); ?>" class="action-btn delete-btn"
+                 onclick="return confirm('Are you sure you want to delete this user?');">Delete</a>
+            </td>
+          </tr>
+        <?php endforeach; ?>
+      </tbody>
     </table>
   </div>
 
